@@ -1,3 +1,91 @@
 body {
     text-align: center;
+    background-image: url(../images/pattern.png);
+}
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    display: table;
+    margin: 0 auto;
+}
+
+    .score-panel .lives {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+
+        .score-panel .lives li {
+            list-style: none;
+            display: inline-block;
+        }
+            .score-panel .lives li img {
+                width: 40px;
+                height: 50px;
+            }
+    .score-panel .restart {
+        cursor: pointer;
+        color: tomato;
+        font-size: 30px;
+        font-family: 'Lucida Calligraphy';
+    }
+    .score-panel .level {
+        color: tomato;
+        font-size: 30px;
+        font-family: 'Lucida Calligraphy';
+    }
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color:white;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid tomato;
+    border-radius: 50px;
+    color: tomato;
+    width: 30%;
+}
+.close{
+    cursor:pointer;
+    font-size:40px;
+    color:black;
+}
+.go {
+    font-size: 40px;
+    font-weight:bold;
+}
+
+.scoreContainer {
+    width: 100%;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.btnSuccess {
+    background-color: tomato;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
