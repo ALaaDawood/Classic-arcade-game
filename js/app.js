@@ -1,5 +1,34 @@
 //level increases each time player wins
 let level = 1;
+//get all the lives to decrease when player loses
+let lives = 5;
+let livesArr = document.querySelectorAll('li');
+//implement restart button
+const restartBtn = document.querySelector('.restart');
+/*restart button reloads the page to start the game again*/
+restartBtn.addEventListener('click', function () {
+    reset();
+});
+//get the span update the level of the user 
+let lspan = document.querySelector('.levelSpan');
+// Get the modal
+let modal = document.getElementById("myModal");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks on play again, close the modal and restart the game
+span.onclick = function () {
+    modal.style.display = "none";
+    reset();
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+//get the container 
+let container = document.querySelector('.container');
+const body = document.querySelector('body');
     // Enemies our player must avoid
     class Enemy {
         constructor(_x, _y, _speed) {
@@ -22,8 +51,13 @@ let level = 1;
         // Draw the enemy on the screen, required method for game
         render() {
             ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+            //handle collision with enemies
+            if (player.x >= this.x - 50 && player.x <= this.x + 50) {
+                if (player.y >= this.y - 40 && player.y <= this.y + 40) {
+                    player.playerLose();
+                }
+            }
         }
-        
     };
        //Our Player's Class
     class Player {
@@ -53,8 +87,6 @@ let level = 1;
             else if (dir == 'up') {
                 this.y -= 50;
                 if (this.y < -10) {
-                    this.y = 400;
-                    this.x = 200;
                     this.playerWin();
                 }
             }
@@ -79,9 +111,29 @@ let level = 1;
             else if (key == 'down')
                 return 'down';
         }
+        //handle when player reaches water
         playerWin()
         {
+            this.y = 400;
+            this.x = 200;
             level++;
+            lspan.innerText = level - 1;
+            if (level == 10)
+            {
+                displayWin();
+            }
+        }
+        //handle when player collides with enemy
+        //reset the game, Lose one life
+        playerLose() {
+            player.x = 200;
+            player.y = 400;
+            if (lives == 1) {
+                gameOver();
+            } else {
+                lives--;
+                livesArr[lives].style.display = 'none';
+            }
         }
     };
 
@@ -96,10 +148,39 @@ let level = 1;
     ];
     // Place the player object in a variable called player
     let player = new Player(200, 400);
+    //restart the game
+    function reset() {
+        window.location.reload();
+    }
+    // When the player loses, open the modal
+    function gameOver() {
+        modal.style.display = "block";
+    }
+    //when player gets to level 10(the final level)
+    function displayWin() {
+        container.parentNode.removeChild(container);
+        /****************Create Score Board Container********************/
+        const scoreContainer = document.createElement('div');
+        scoreContainer.setAttribute('class', 'scoreContainer');
+        body.appendChild(scoreContainer);
 
+        const checkImg = document.createElement('img');
+        checkImg.setAttribute('src', '../images/win.gif');
 
-    // This listens for key presses and sends the keys to your
-    // Player.handleInput() method. You don't need to modify this.
+        const congrats = document.createElement('h1');
+        congrats.innerText = "Congratulations! You completed all levels";
+        const againBtn = document.createElement('button');
+        againBtn.innerText = "Play Again";
+        againBtn.setAttribute('class', 'btnSuccess');
+        againBtn.addEventListener('click', function () {
+            window.location.reload();
+        });
+        scoreContainer.appendChild(checkImg);
+        scoreContainer.appendChild(congrats);
+        scoreContainer.appendChild(againBtn);
+    }
+    // This listens for key presses and sends the keys to
+    // Player.handleInput() method.
     document.addEventListener('keyup', function (e) {
         var allowedKeys = {
             37: 'left',
@@ -110,4 +191,3 @@ let level = 1;
 
         player.update(player.handleInput(allowedKeys[e.keyCode]));
     });
- //end of file
