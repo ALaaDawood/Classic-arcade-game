@@ -1,11 +1,41 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
+    <title> Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
+    <div class="container">
+        <section class="score-panel">
+            <div class="restart">
+                <i class="fa fa-repeat"> </i> Restart
+            </div>
+            <ul class="lives">
+                <li><img src="images/Heart.png" /></li>
+                <li><img src="images/Heart.png" /></li>
+                <li><img src="images/Heart.png" /></li>
+                <li><img src="images/Heart.png" /></li>
+                <li><img src="images/Heart.png" /></li>
+            </ul>
+            <div class="level">
+                <i class="fa fa-arrow-up"> </i> Level <span class="levelSpan"></span>
+            </div>
+            <div id="canvasHolder"></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <!--<img src="images/Game_Over.png" width="300" height="300" />-->
+                    <span class="go">GAME OVER... </span>
+                    <span class="close">Play Again?</span>
+                </div>
+
+            </div>
+        </section>
+        
+    </div>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
