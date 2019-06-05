@@ -26,7 +26,7 @@ his project is a part of the udacity Front-End web development Nanodegree progra
 
 ## Screenshots
 ![ScreenShot1](images/screenshots/ss1.jpg)
-![ScreenShot1](images/screenshots/ss2.png)
+![ScreenShot1](images/screenshots/ss2.jpg)
 ![ScreenShot1](images/screenshots/ss3.jpg)
 ![ScreenShot1](images/screenshots/ss4.jpg)
 
