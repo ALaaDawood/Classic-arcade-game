@@ -17,11 +17,11 @@
 - use arrow keys to move about the space.
 - you have 5 lives which decreases each time a collision with a bug happens.
 - each time you reach the water, you get level up.
-- with each level up, the speed of the passing buge increases.
+- with each level up, the speed of the passing bugs increases.
 - the game is 10 levels total.
 
 ## About the Project 
-his project is a part of the udacity Front-End web development Nanodegree program.
+This project is a part of the udacity Front-End web development Nanodegree program.
 
 
 ## Screenshots
